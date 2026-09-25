@@ -1,11 +1,11 @@
-/* ТРЕБОВАНИЕ: Универсальный селектор (*) и box-sizing: border-box */
+/* Сброс дефолтных отступов браузера и настройка box-sizing для всех элементов */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* ТРЕБОВАНИЕ: font-family (Google-шрифт применен ко всему тексту) */
+/* Базовые стили для всей страницы и подключение основного шрифта */
 body {
     font-family: 'Comfortaa', sans-serif;
     font-size: 19px;
@@ -13,27 +13,27 @@ body {
     line-height: 1.6;
     background-color: #ffffff;
     display: flex;
-    flex-direction: column; /* ИСПРАВЛЕНО: элементы выстраиваются сверху вниз, включая футер */
-    align-items: center;    /* ИСПРАВЛЕНО: контент выравнивается по центру экрана */
+    flex-direction: column; /* Выстраиваем контент и футер в одну вертикальную колонку */
+    align-items: center;    /* Центрируем всю страницу по горизонтали */
 }
 
-/* ТРЕБОВАНИЕ: Использование margin и padding для блоков */
+/* Стили для центрального контейнера */
 .wrapper {
     width: 100%;
     max-width: 850px;
-    padding: 40px 20px 0 20px; /* Использован padding */
+    padding: 40px 20px 0 20px;
 }
 
-/* ТРЕБОВАНИЕ: Свойства блоков (header) с margin и padding */
+/* Оформление шапки */
 header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 0;          /* Использован padding */
-    margin-bottom: 40px;      /* Использован margin */
+    padding: 10px 0;          
+    margin-bottom: 40px;      
 }
 
-/* ТРЕБОВАНИЕ для текста (font-size, font-weight, color) */
+/* Главный заголовок сайта */
 header h1 {
     font-size: 32px;
     font-weight: 700;
@@ -41,38 +41,38 @@ header h1 {
     margin-bottom: 25px;
 }
 
-/* ТРЕБОВАНИЕ: Свойства для nav (margin/padding) */
+/* Контейнер для ссылок меню */
 nav {
     display: flex;
     gap: 20px;
-    padding-bottom: 5px;      /* Использован padding */
+    padding-bottom: 5px;      
 }
 
-/* ТРЕБОВАНИЕ: Полные стили для ссылок (text-decoration, font-family, font-size, color) */
+/* Оформление ссылок в навигации */
 nav a {
-    text-decoration: none;    /* Без подчеркивания */
+    text-decoration: none;    /* Убираем стандартное подчеркивание */
     font-family: 'Comfortaa', sans-serif;
     font-size: 18px;
     color: #000000;
     font-weight: 600;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.2s ease;
+    border-bottom: 2px solid transparent; /* Заготовка под красивую линию при наведении */
+    transition: border-color 0.2s ease;   /* Плавная анимация ховера */
 }
 
-/* ТРЕБОВАНИЕ: Изменение цвета ссылки при наведении (:hover) */
+/* Эффект изменения цвета и появление линии при наведении на ссылку */
 nav a:hover {
     border-color: #000000;
-    color: #e65c00;           /* Цвет меняется при наведении */
+    color: #e65c00;           
 }
 
-/* ТРЕБОВАНИЕ: Свойства блоков (main) */
+/* Стили для главного контента и секций */
 main {
-    margin-bottom: 50px;      /* Использован margin */
+    margin-bottom: 50px;      
     padding: 0;
 }
 
 section {
-    margin-bottom: 45px;      /* Использован margin */
+    margin-bottom: 45px;      
 }
 
 section h2 {
@@ -87,15 +87,16 @@ section h2 {
     color: #000000;
 }
 
-/* ТРЕБОВАНИЕ: Для изображений (width, height) */
+/* Стили для адаптивности картинки */
 .about img {
-    width: 100%;              /* Задана ширина */
-    height: auto;             /* Задана высота */
+    width: 100%;              /* Растягиваем картинку на всю ширину блока */
+    height: auto;             /* Высоту подбираем пропорционально автоматический */
     display: block;
     object-fit: cover;
     margin-bottom: 25px;
 }
 
+/* Отступы для списка преимуществ */
 .advantages ul {
     padding-left: 25px;
 }
@@ -105,21 +106,21 @@ section h2 {
     margin-bottom: 12px;
 }
 
-/* ТРЕБОВАНИЕ: Для таблиц (padding, border, border-collapse, text-align) */
+/* Оформление таблицы меню */
 table {
     width: 100%;
-    border-collapse: collapse; /* Установлено схлопывание границ */
+    border-collapse: collapse; /* Схлопываем двойные границы ячеек */
     margin-top: 20px;
 }
 
 th, td {
-    padding: 14px 12px;        /* Задан padding для таблиц */
-    border: 2px solid #888888; /* Задан border для таблиц */
-    text-align: center;        /* Задан text-align для таблиц */
+    padding: 14px 12px;        
+    border: 2px solid #888888; 
+    text-align: center;        
     font-size: 17px;
 }
 
-/* Названия блюд ровняем влево */
+/* Названия блюд выравниваем по левому краю для удобства чтения */
 table tbody td:nth-child(2) {
     text-align: left;
     padding-left: 15px;
@@ -129,23 +130,24 @@ th {
     font-weight: 700;
 }
 
+/* Ограничиваем ширину первой колонки с номерами строк */
 table th:nth-child(1),
 table td:nth-child(1) {
     width: 50px;
 }
 
-/* ТРЕБОВАНИЕ: Для футера (background-color: black, color: white, margin, padding) */
+/* Черный футер на всю ширину экрана */
 footer {
-    background-color: black;  /* Черный фон */
-    color: white;             /* Белый текст */
-    padding: 35px 0;          /* Задан padding */
-    margin-top: auto;         /* Использован margin для прижатия к низу */
-    width: 100%;              /* ИСПРАВЛЕНО: Футер занимает всю ширину экрана */
+    background-color: black;  
+    color: white;             
+    padding: 35px 0;          
+    margin-top: auto;         /* Прижимаем футер к самому низу страницы */
+    width: 100%;              
     display: flex;
     justify-content: center;
 }
 
-/* Внутренний контейнер футера, чтобы текст стоял ровно по сетке сайта */
+/* Ограничитель контента внутри футера, чтобы текст не прилипал к краям экрана */
 .footer-content {
     width: 100%;
     max-width: 850px;
@@ -158,15 +160,16 @@ footer p {
     margin-bottom: 15px;
 }
 
-/* Стилизация ссылки в футере согласно правилам для ссылок */
+/* Стилизация телефонной ссылки в подвале */
 footer a {
     text-decoration: none;
     font-family: 'Comfortaa', sans-serif;
     font-size: 19px;
-    color: #ff9933;           /* Контрастный цвет для черного фона */
+    color: #ff9933;           /* Контрастный оранжевый цвет, чтобы читалось на черном фоне */
     font-weight: 700;
 }
 
+/* При наведении ссылка в футере плавно становится белой */
 footer a:hover {
-    color: white;             /* Цвет меняется при наведении */
+    color: white;             
 }
