@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбрать книгу — Feathertyris</title>
+    <!-- Тот же шрифт, что и на главной -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Основные стили + отдельный файл для каталога -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lunch.css">
+    <!-- Стили для печати -->
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body class="lunch-page">
+
+    <!-- Шапка с активной ссылкой "Выбрать книгу" -->
+    <header>
+        <h1>Feathertyris</h1>
+        <nav>
+            <a href="index.html">О нас</a>
+            <a href="lunch.html" class="active">Выбрать книгу</a>
+            <a href="index.html#feedback">Обратная связь</a>
+            <a href="index.html#contacts">Контакты</a>
+            <a href="login.html">Войти</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Секция "Новинки" -->
+        <section class="books">
+            <h2>Новинки</h2>
+            <!-- Блок со всеми книгами: сетка Grid -->
+            <div class="dishes">
+
+                <!-- Блок каждой книги: флекс-колонка -->
+                <div class="dish">
+                    <img src="book1.jpg" alt="Обложка книги">
+                    <p class="price">320Р</p>
+                    <p class="name">Атомные привычки</p>
+                    <p class="weight">320 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book2.jpg" alt="Обложка книги">
+                    <p class="price">280Р</p>
+                    <p class="name">Думай медленно, решай быстро</p>
+                    <p class="weight">450 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book3.jpg" alt="Обложка книги">
+                    <p class="price">350Р</p>
+                    <p class="name">Sapiens. Краткая история человечества</p>
+                    <p class="weight">520 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Секция "Бестселлеры" -->
+        <section class="books">
+            <h2>Бестселлеры</h2>
+            <div class="dishes">
+
+                <div class="dish">
+                    <img src="book4.jpg" alt="Обложка книги">
+                    <p class="price">150Р</p>
+                    <p class="name">Мастер и Маргарита</p>
+                    <p class="weight">480 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book5.jpg" alt="Обложка книги">
+                    <p class="price">180Р</p>
+                    <p class="name">1984</p>
+                    <p class="weight">320 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book6.jpg" alt="Обложка книги">
+                    <p class="price">210Р</p>
+                    <p class="name">Преступление и наказание</p>
+                    <p class="weight">670 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Секция "Классика" -->
+        <section class="books">
+            <h2>Классика</h2>
+            <div class="dishes">
+
+                <div class="dish">
+                    <img src="book7.jpg" alt="Обложка книги">
+                    <p class="price">130Р</p>
+                    <p class="name">Три товарища</p>
+                    <p class="weight">420 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book8.jpg" alt="Обложка книги">
+                    <p class="price">160Р</p>
+                    <p class="name">Гарри Поттер и философский камень</p>
+                    <p class="weight">510 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+                <div class="dish">
+                    <img src="book9.jpg" alt="Обложка книги">
+                    <p class="price">140Р</p>
+                    <p class="name">Мёртвые души</p>
+                    <p class="weight">380 стр.</p>
+                    <button type="button">Добавить</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер с контактами -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <p>Свяжитесь с нами:</p>
+            <a href="tel:+78005553535">Позвонить нам +7-800-555-35-35</a>
+        </div>
+    </footer>
+
+</body>
+</html>

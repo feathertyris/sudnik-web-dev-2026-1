@@ -1,0 +1,505 @@
+/* ===== СБРОС ===== */
+/* Убираю отступы и ставлю border-box для всех элементов */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Плавный скролл для якорных ссылок */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Базовые настройки страницы */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #000000;
+    line-height: 1.6;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* чтобы футер был внизу при коротком контенте */
+    align-items: center;
+}
+
+/* ===== ОБЩАЯ ОБЁРТКА ===== */
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto; /* центрирую по горизонтали */
+    padding: 40px 20px 0 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== ШАПКА ===== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+/* Меню — флексбокс, ссылки переносятся при нехватке места */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+/* При наведении цвет меняется на tomato */
+nav a:hover {
+    border-color: tomato;
+    color: tomato;
+}
+
+/* Активная ссылка выделяется tomato */
+nav a.active {
+    color: tomato;
+    border-color: tomato;
+}
+
+/* ===== СЕТКА ГЛАВНОЙ: САЙДБАР + КОНТЕНТ ===== */
+.layout {
+    display: flex;
+    gap: 40px;
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+/* Сайдбар */
+.sidebar {
+    flex: 0 0 260px;
+    padding: 20px;
+    background-color: #f1eee9;
+    border-radius: 20px;
+    align-self: flex-start;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Список фактов — флекс-колонка */
+.facts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.facts li {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Контент */
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.about img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border-radius: 20px;
+}
+
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    margin-bottom: 12px;
+}
+
+/* ===== ТАБЛИЦА ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px 12px;
+    border: 2px solid #888888;
+    text-align: center;
+    font-size: 17px;
+}
+
+/* Названия книг выравниваю влево — так читабельнее */
+table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
+
+th {
+    font-weight: 700;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== */
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label,
+.group-label {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Все текстовые поля в едином стиле */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 12px 14px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+/* При фокусе рамка становится tomato */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: tomato;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    accent-color: tomato;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.form-group input[type="file"] {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #888888;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: tomato;
+}
+
+.btn-submit {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: tomato;
+    border-color: tomato;
+}
+
+/* ===== ФУТЕР ===== */
+footer {
+    background-color: black;
+    color: white;
+    padding: 35px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto; /* прижимаю к низу */
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+footer a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: tomato;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* ===== СТРАНИЦА ЛОГИНА ===== */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('promo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Затемняющий слой, чтобы форма читалась на любом фоне */
+.login-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #000000;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-form .btn-submit {
+    align-self: stretch;
+    text-align: center;
+}
+
+.back-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-size: 14px;
+    color: tomato;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+    color: #000000;
+}
+
+/* ===== АДАПТИВНОСТЬ ГЛАВНОЙ ===== */
+
+/* ≤800px: сайдбар сверху, картинка 500px, меню по space-between */
+@media (max-width: 800px) {
+    .layout {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .about img {
+        width: 500px;
+        max-width: 100%;
+    }
+
+    /* space-between + gap: 0, чтобы между крайними ссылками и краем не было отступа */
+    nav {
+        justify-content: space-between;
+        gap: 0;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+}
+
+/* ≤600px: всё по центру, меню вертикальное, шрифт ссылок +4px, таблица −2px */
+@media (max-width: 600px) {
+    body {
+        font-size: 17px;
+    }
+
+    .wrapper {
+        padding: 25px 15px 0 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+        text-align: center;
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 20px;
+    }
+
+    section h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .about img {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 15px;
+    }
+
+    .sidebar {
+        padding: 15px;
+    }
+
+    .btn-submit {
+        align-self: stretch;
+        text-align: center;
+    }
+}
+
+/* ≤400px: шрифт таблицы ещё −2px, чтобы не было горизонтальной прокрутки */
+@media (max-width: 400px) {
+    th, td {
+        font-size: 13px;
+        padding: 8px 6px;
+    }
+}

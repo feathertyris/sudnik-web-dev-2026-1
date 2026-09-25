@@ -1,0 +1,179 @@
+/* ===== СТРАНИЦА КАТАЛОГА ===== */
+
+/* Шапка той же ширины, что и каталог */
+.lunch-page header {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 20px 10px 20px;
+}
+
+/* Секции с книгами центрирую */
+.books {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 45px;
+    padding: 0 20px;
+}
+
+/* Сетка каталога: 3 колонки по 1fr, отступ 10px */
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+/* Карточка книги: флекс-колонка, чтобы кнопка была внизу */
+.dish {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 35px;
+    cursor: pointer;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    transition: border-color 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover: сплошная граница tomato */
+.dish:hover {
+    border-color: tomato;
+}
+
+/* Контекстный селектор: при наведении на карточку кнопка меняет фон */
+.dish:hover button {
+    background-color: tomato;
+    color: #ffffff;
+}
+
+/* Обложка книги */
+.dish img {
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+/* Цена — крупнее */
+.dish .price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 6px;
+}
+
+/* Название — крупнее */
+.dish .name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Вес/объём — серый */
+.dish .weight {
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 20px;
+}
+
+/* Кнопка прижата к низу карточки */
+.dish button {
+    margin-top: auto;
+    align-self: stretch;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    background-color: #f1eee9;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ===== АДАПТИВНОСТЬ КАТАЛОГА ===== */
+
+/* ≤800px: 2 колонки, меню по space-between */
+@media (max-width: 800px) {
+    .dishes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dish {
+        padding: 25px 30px;
+    }
+
+    .dish .price {
+        font-size: 20px;
+    }
+
+    .dish .name {
+        font-size: 18px;
+    }
+
+    nav {
+        justify-content: space-between;
+        gap: 0;
+    }
+}
+
+/* ≤600px: 1 колонка, меню вертикальное, заголовки по центру, ссылки +4px */
+@media (max-width: 600px) {
+    .dishes {
+        grid-template-columns: 1fr;
+    }
+
+    .dish {
+        padding: 20px 25px;
+        border-radius: 25px;
+    }
+
+    .dish img {
+        border-radius: 25px;
+    }
+
+    .dish .price {
+        font-size: 18px;
+    }
+
+    .dish .name {
+        font-size: 17px;
+    }
+
+    .dish button {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    header h1 {
+        text-align: center;
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 20px;
+    }
+
+    .books h2 {
+        text-align: center;
+    }
+}

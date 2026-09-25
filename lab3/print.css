@@ -1,0 +1,58 @@
+/* ===== СТИЛИ ДЛЯ ПЕЧАТИ ===== */
+@media print {
+
+    body {
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 12pt;
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    /* Скрываю элементы, которые не нужны на бумаге */
+    header nav,
+    .feedback,
+    footer,
+    .btn-submit,
+    .sidebar,
+    .dish button,
+    .login-container,
+    .back-link {
+        display: none !important;
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        font-size: 24pt;
+    }
+
+    /* Убираю тени и закругления для чистоты печати */
+    .dish {
+        filter: none;
+        border: 1px solid #000000;
+        border-radius: 0;
+        padding: 10px;
+    }
+
+    .dish img {
+        border-radius: 0;
+    }
+
+    th, td {
+        border: 1px solid #000000;
+    }
+
+    a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    /* Сетка каталога — 2 колонки, чтобы влезало на бумагу */
+    .dishes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}

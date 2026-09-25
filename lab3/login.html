@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — Feathertyris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body class="login-page">
+
+    <!-- Форма входа по центру страницы -->
+    <div class="login-container">
+        <form action="https://httpbin.org/post" method="POST" class="login-form">
+            <h1 class="login-title">Вход</h1>
+
+            <!-- Логин -->
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                <input type="text" id="login" name="login" placeholder="Введите логин" required>
+            </div>
+
+            <!-- Пароль -->
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+            </div>
+
+            <!-- Чекбокс "запомнить меня" -->
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="remember">
+                    Запомнить меня
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">Войти</button>
+
+            <!-- Ссылка назад на главную -->
+            <p class="back-link"><a href="index.html">Вернуться на главную</a></p>
+        </form>
+    </div>
+
+</body>
+</html>
