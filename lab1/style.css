@@ -1,11 +1,11 @@
-/* ТРЕБОВАНИЕ: Универсальный селектор (*) и box-sizing: border-box */
+/* Сбрасываю отступы и делаю border-box для всех элементов */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* ТРЕБОВАНИЕ: font-family (Google-шрифт применен ко всему тексту) */
+/* Основные настройки страницы: шрифт, цвет, выравнивание */
 body {
     font-family: 'Comfortaa', sans-serif;
     font-size: 19px;
@@ -17,19 +17,19 @@ body {
     align-items: center;    
 }
 
-/* Плавный скролл для якорной ссылки */
+/* Чтобы якорная ссылка плавно скроллила вниз */
 html {
     scroll-behavior: smooth;
 }
 
-/* ТРЕБОВАНИЕ: Использование margin и padding для блоков */
+/* Обёртка, чтобы контент был по центру и не растягивался */
 .wrapper {
     width: 100%;
     max-width: 850px;
     padding: 40px 20px 0 20px; 
 }
 
-/* ТРЕБОВАНИЕ: Свойства блоков (header) с margin и padding */
+/* Шапка: заголовок и меню друг под другом */
 header {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ header {
     margin-bottom: 40px;      
 }
 
-/* ТРЕБОВАНИЕ для текста (font-size, font-weight, color) */
+/* Стили для главного заголовка */
 header h1 {
     font-size: 32px;
     font-weight: 700;
@@ -46,14 +46,14 @@ header h1 {
     margin-bottom: 25px;
 }
 
-/* ТРЕБОВАНИЕ: Свойства для nav (margin/padding) */
+/* Меню: ссылки в ряд */
 nav {
     display: flex;
     gap: 20px;
     padding-bottom: 5px;      
 }
 
-/* ТРЕБОВАНИЕ: Полные стили для ссылок (text-decoration, font-family, font-size, color) */
+/* Стили для ссылок в меню */
 nav a {
     text-decoration: none;    
     font-family: 'Comfortaa', sans-serif;
@@ -64,22 +64,24 @@ nav a {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-/* ТРЕБОВАНИЕ: Изменение цвета ссылки при наведении (:hover) */
+/* При наведении ссылка меняет цвет и появляется подчёркивание */
 nav a:hover {
     border-color: #000000;
     color: #e65c00;           
 }
 
-/* ТРЕБОВАНИЕ: Свойства блоков (main) */
+/* Основной блок */
 main {
     margin-bottom: 50px;      
     padding: 0;
 }
 
+/* Отступы между секциями */
 section {
     margin-bottom: 45px;      
 }
 
+/* Заголовки секций */
 section h2 {
     font-size: 26px;
     font-weight: 700;
@@ -87,12 +89,13 @@ section h2 {
     color: #000000;
 }
 
+/* Текст в секции "О нас" */
 .about p {
     font-size: 19px;
     color: #000000;
 }
 
-/* ТРЕБОВАНИЕ: Для изображений (width, height) */
+/* Картинка в секции "О нас" */
 .about img {
     width: 100%;              
     height: auto;             
@@ -101,22 +104,25 @@ section h2 {
     margin-bottom: 25px;
 }
 
+/* Отступ для списка преимуществ */
 .advantages ul {
     padding-left: 25px;
 }
 
+/* Пункты списка */
 .advantages li {
     font-size: 19px;
     margin-bottom: 12px;
 }
 
-/* ТРЕБОВАНИЕ: Для таблиц (padding, border, border-collapse, text-align) */
+/* Таблица с блюдами */
 table {
     width: 100%;
     border-collapse: collapse; 
     margin-top: 20px;
 }
 
+/* Ячейки таблицы */
 th, td {
     padding: 14px 12px;        
     border: 2px solid #888888; 
@@ -124,22 +130,24 @@ th, td {
     font-size: 17px;
 }
 
-/* Названия блюд ровняем влево */
+/* Названия блюд выравниваю влево */
 table tbody td:nth-child(2) {
     text-align: left;
     padding-left: 15px;
 }
 
+/* Жирный шрифт для заголовков таблицы */
 th {
     font-weight: 700;
 }
 
+/* Первый столбец (номер) делаю поуже */
 table th:nth-child(1),
 table td:nth-child(1) {
     width: 50px;
 }
 
-/* ТРЕБОВАНИЕ: Для футера (background-color: black, color: white, margin, padding) */
+/* Футер: чёрный фон, белый текст */
 footer {
     background-color: black;  
     color: white;             
@@ -149,7 +157,7 @@ footer {
     justify-content: center;
 }
 
-/* Внутренний контейнер футера, чтобы текст стоял ровно по сетке сайта */
+/* Внутренний блок футера, чтобы текст был по центру страницы */
 .footer-content {
     width: 100%;
     max-width: 850px;
@@ -157,12 +165,13 @@ footer {
     text-align: left;
 }
 
+/* Текст в футере */
 footer p {
     font-size: 16px;
     margin-bottom: 15px;
 }
 
-/* Стилизация ссылки в футере согласно правилам для ссылок */
+/* Ссылка в футере */
 footer a {
     text-decoration: none;
     font-family: 'Comfortaa', sans-serif;
@@ -172,6 +181,7 @@ footer a {
     transition: color 0.2s ease;
 }
 
+/* При наведении ссылка становится белой */
 footer a:hover {
     color: white;             
 }
