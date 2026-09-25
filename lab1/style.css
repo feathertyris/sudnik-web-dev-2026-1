@@ -1,0 +1,172 @@
+/* ТРЕБОВАНИЕ: Универсальный селектор (*) и box-sizing: border-box */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ТРЕБОВАНИЕ: font-family (Google-шрифт применен ко всему тексту) */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #000000;
+    line-height: 1.6;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; /* ИСПРАВЛЕНО: элементы выстраиваются сверху вниз, включая футер */
+    align-items: center;    /* ИСПРАВЛЕНО: контент выравнивается по центру экрана */
+}
+
+/* ТРЕБОВАНИЕ: Использование margin и padding для блоков */
+.wrapper {
+    width: 100%;
+    max-width: 850px;
+    padding: 40px 20px 0 20px; /* Использован padding */
+}
+
+/* ТРЕБОВАНИЕ: Свойства блоков (header) с margin и padding */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;          /* Использован padding */
+    margin-bottom: 40px;      /* Использован margin */
+}
+
+/* ТРЕБОВАНИЕ для текста (font-size, font-weight, color) */
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+/* ТРЕБОВАНИЕ: Свойства для nav (margin/padding) */
+nav {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 5px;      /* Использован padding */
+}
+
+/* ТРЕБОВАНИЕ: Полные стили для ссылок (text-decoration, font-family, font-size, color) */
+nav a {
+    text-decoration: none;    /* Без подчеркивания */
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+/* ТРЕБОВАНИЕ: Изменение цвета ссылки при наведении (:hover) */
+nav a:hover {
+    border-color: #000000;
+    color: #e65c00;           /* Цвет меняется при наведении */
+}
+
+/* ТРЕБОВАНИЕ: Свойства блоков (main) */
+main {
+    margin-bottom: 50px;      /* Использован margin */
+    padding: 0;
+}
+
+section {
+    margin-bottom: 45px;      /* Использован margin */
+}
+
+section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.about p {
+    font-size: 19px;
+    color: #000000;
+}
+
+/* ТРЕБОВАНИЕ: Для изображений (width, height) */
+.about img {
+    width: 100%;              /* Задана ширина */
+    height: auto;             /* Задана высота */
+    display: block;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+/* ТРЕБОВАНИЕ: Для таблиц (padding, border, border-collapse, text-align) */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Установлено схлопывание границ */
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px 12px;        /* Задан padding для таблиц */
+    border: 2px solid #888888; /* Задан border для таблиц */
+    text-align: center;        /* Задан text-align для таблиц */
+    font-size: 17px;
+}
+
+/* Названия блюд ровняем влево */
+table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
+
+th {
+    font-weight: 700;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* ТРЕБОВАНИЕ: Для футера (background-color: black, color: white, margin, padding) */
+footer {
+    background-color: black;  /* Черный фон */
+    color: white;             /* Белый текст */
+    padding: 35px 0;          /* Задан padding */
+    margin-top: auto;         /* Использован margin для прижатия к низу */
+    width: 100%;              /* ИСПРАВЛЕНО: Футер занимает всю ширину экрана */
+    display: flex;
+    justify-content: center;
+}
+
+/* Внутренний контейнер футера, чтобы текст стоял ровно по сетке сайта */
+.footer-content {
+    width: 100%;
+    max-width: 850px;
+    padding: 0 20px;
+    text-align: left;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Стилизация ссылки в футере согласно правилам для ссылок */
+footer a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #ff9933;           /* Контрастный цвет для черного фона */
+    font-weight: 700;
+}
+
+footer a:hover {
+    color: white;             /* Цвет меняется при наведении */
+}
