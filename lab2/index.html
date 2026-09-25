@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Construct — Доставка бизнес-ланчей</title>
+    <!-- Подключаю шрифт Comfortaa с Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Мой CSS-файл -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Обёртка, чтобы контент был по центру и не растягивался -->
+    <div class="wrapper">
+        <!-- Шапка: тут заголовок сайта и меню -->
+        <header>
+            <h1>Food Construct</h1>
+            <!-- Навигация по страницам -->
+            <nav>
+                <a href="#">О нас</a>
+                <a href="#">Собрать ланч</a>
+                <a href="#">Заказы</a>
+                <!-- Ссылка на форму обратной связи (якорь) -->
+                <a href="#feedback">Обратная связь</a>
+                <!-- Ссылка на футер (якорь) -->
+                <a href="#contacts">Контакты</a>
+                <!-- Ссылка на отдельную страницу логина -->
+                <a href="login.html">Войти</a>
+            </nav>
+        </header>
+
+        <!-- Основная часть страницы -->
+        <main>
+            <!-- Секция "О нас" -->
+            <section class="about">
+                <h2>О нас</h2>
+                <!-- Картинка с едой -->
+                <img src="promo.jpg" alt="Разнообразные блюда Food Construct">
+                <!-- Немного текста о компании -->
+                <p>Food Construct - доставка бизнес-ланчей в Москве. Мы привезем вам горячую вкусную еду в любую точку города к назначенному времени.</p>
+            </section>
+
+            <!-- Секция преимуществ (по требованиям нужно минимум 3 пункта) -->
+            <section class="advantages">
+                <h2>Преимущества Food Construct</h2>
+                <ul>
+                    <li>Привозим обед к назначенному времени без опозданий</li>
+                    <li>Надежно упаковываем блюда в удобные контейнеры бесплатно</li>
+                    <li>Доставляем ланчи весь день с 7:00 до 23:00</li>
+                </ul>
+            </section>
+
+            <!-- Секция с топ-5 блюдами (по требованиям минимум 5 строк в таблице) -->
+            <section class="top-dishes">
+                <h2>Топ-5 популярных блюд</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Название</th>
+                            <th>Кол-во заказов в неделю</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Лазанья</td><td>185</td><td>385₽</td></tr>
+                        <tr><td>2</td><td>Том Ям с креветками</td><td>161</td><td>365₽</td></tr>
+                        <tr><td>3</td><td>Норвежский суп</td><td>144</td><td>270₽</td></tr>
+                        <tr><td>4</td><td>Жареная картошка с грибами</td><td>132</td><td>150₽</td></tr>
+                        <tr><td>5</td><td>Котлеты из курицы с картофельным пюре</td><td>128</td><td>225₽</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Форма обратной связи (новое задание) -->
+            <section class="feedback" id="feedback">
+                <h2>Обратная связь</h2>
+                <!-- Отправляем POST на httpbin.org, чтобы посмотреть параметры -->
+                <!-- multipart/form-data нужен, чтобы файл нормально передался -->
+                <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+
+                    <!-- ФИО -->
+                    <div class="form-group">
+                        <label for="fio">ФИО:</label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <!-- Радио-кнопки: откуда узнали -->
+                    <!-- name одинаковый у всех, чтобы выбрать только один вариант -->
+                    <div class="form-group">
+                        <span class="group-label">Откуда узнали о нас?</span>
+                        <div class="radio-group">
+                            <label><input type="radio" name="source" value="ads" required> Реклама</label>
+                            <label><input type="radio" name="source" value="friends"> Друзья</label>
+                            <label><input type="radio" name="source" value="search"> Поисковик</label>
+                            <label><input type="radio" name="source" value="other"> Другое</label>
+                        </div>
+                    </div>
+
+                    <!-- Селект: тип обращения -->
+                    <div class="form-group">
+                        <label for="type">Тип обращения:</label>
+                        <select id="type" name="type" required>
+                            <option value="" disabled selected>— Выберите —</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                        </select>
+                    </div>
+
+                    <!-- Большое текстовое поле -->
+                    <div class="form-group">
+                        <label for="message">Текст сообщения:</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Напишите ваш отзыв..." required></textarea>
+                    </div>
+
+                    <!-- Прикрепление файла -->
+                    <div class="form-group">
+                        <label for="attachment">Вложение (файл):</label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+
+                    <!-- Чекбокс согласия -->
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="consent" required>
+                            Даю согласие на обработку персональных данных
+                        </label>
+                    </div>
+
+                    <!-- Кнопка отправки -->
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Футер с контактами (сюда ведёт якорь "Контакты") -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <p>Свяжитесь с нами для заказа вкусных обедов:</p>
+            <!-- Ссылка на телефон -->
+            <a href="tel:+78005553535">Позвонить нам +7-800-555-35-35</a>
+        </div>
+    </footer>
+
+</body>
+</html>

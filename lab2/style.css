@@ -1,0 +1,406 @@
+/* Сбрасываю отступы и ставлю border-box для всех элементов */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Основные настройки страницы: шрифт, цвет, выравнивание по центру */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #000000;
+    line-height: 1.6;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Чтобы якорные ссылки скроллили плавно */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Обёртка для контента, чтобы он не растягивался на весь экран */
+.wrapper {
+    width: 100%;
+    max-width: 850px;
+    padding: 40px 20px 0 20px;
+}
+
+/* Шапка: заголовок и меню друг под другом */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+
+/* Главный заголовок */
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+/* Меню: ссылки в ряд, переносятся, если не влезают */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 5px;
+}
+
+/* Стили для ссылок в меню */
+nav a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+/* При наведении ссылка подчёркивается и меняет цвет */
+nav a:hover {
+    border-color: #000000;
+    color: #e65c00;
+}
+
+/* Основной блок страницы */
+main {
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+/* Отступы между секциями */
+section {
+    margin-bottom: 45px;
+}
+
+/* Заголовки секций */
+section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Текст в "О нас" */
+.about p {
+    font-size: 19px;
+    color: #000000;
+}
+
+/* Картинка в "О нас" */
+.about img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+/* Список преимуществ */
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+/* Таблица с блюдами */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Ячейки таблицы: отступы, рамка, выравнивание по центру */
+th, td {
+    padding: 14px 12px;
+    border: 2px solid #888888;
+    text-align: center;
+    font-size: 17px;
+}
+
+/* Названия блюд выравниваю влево, так читабельнее */
+table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Жирный шрифт для заголовков таблицы */
+th {
+    font-weight: 700;
+}
+
+/* Первый столбец (номер) делаю поуже */
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* Футер: чёрный фон, белый текст */
+footer {
+    background-color: black;
+    color: white;
+    padding: 35px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Внутренний блок футера, чтобы текст был по сетке сайта */
+.footer-content {
+    width: 100%;
+    max-width: 850px;
+    padding: 0 20px;
+    text-align: left;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Ссылка в футере — оранжевая, чтобы было видно на чёрном */
+footer a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #ff9933;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+/* При наведении становится белой */
+footer a:hover {
+    color: white;
+}
+
+/* =====================================================
+   ФОРМА ОБРАТНОЙ СВЯЗИ
+   Оформляю в том же стиле, что и вся страница —
+   без лишних фонов и закруглений, чтобы не выбивалась
+   ===================================================== */
+
+/* Форма — флекс-колонка с отступами между полями */
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* Каждое поле — label сверху, input снизу */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Подписи к полям */
+.form-group label,
+.group-label {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Все текстовые поля, email, пароль, селект, textarea */
+/* Одинаковые рамки, чтобы форма смотрелась единообразно */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 12px 14px;
+    border: 2px solid #888888;
+    border-radius: 0;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+/* При фокусе рамка становится чёрной — как у ссылок при наведении */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #000000;
+}
+
+/* Textarea можно растягивать по вертикали */
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Радио-кнопки: в ряд, с переносом */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Крашу радио в чёрный, чтобы сочеталось с текстом */
+.radio-group input[type="radio"] {
+    accent-color: #000000;
+    cursor: pointer;
+}
+
+/* Чекбокс — тоже чёрный */
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    accent-color: #000000;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+/* Поле для файла — рамка пунктиром, чтобы отличалось от текстовых */
+.form-group input[type="file"] {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #888888;
+    border-radius: 0;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #000000;
+}
+
+/* Кнопка отправки — чёрная, при наведении оранжевая, как ссылки */
+.btn-submit {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+    color: #ffffff;
+}
+
+/* =====================================================
+   СТРАНИЦА ЛОГИНА
+   Здесь форма по центру + фон на весь экран (требование лабы)
+   ===================================================== */
+
+/* Фон на весь экран + центрирование формы через flex */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('promo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Затемняющий слой поверх картинки, иначе белая форма сливается */
+.login-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+/* Контейнер с формой — поверх затемнения */
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* Сама форма — белая, с чёрной рамкой в стиле сайта */
+.login-form {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #000000;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Кнопка на всю ширину формы */
+.login-form .btn-submit {
+    align-self: stretch;
+    text-align: center;
+}
+
+/* Ссылка "вернуться на главную" */
+.back-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    color: #e65c00;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+    color: #000000;
+}
