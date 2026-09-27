@@ -1,0 +1,604 @@
+/* =====================================================
+   БАЗОВЫЕ СТИЛИ И СБРОС
+   ===================================================== */
+
+/* Обнуляю отступы и устанавливаю border-box,
+   чтобы padding не увеличивал ширину элементов */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Вопрос: Почему body — flex?
+   Ответ: Чтобы футер прижимался к низу, если контента мало. */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #000000;
+    line-height: 1.6;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Плавная прокрутка по якорным ссылкам */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Обертка для центрирования контента с максимальной шириной */
+.wrapper {
+    width: 100%;
+    max-width: 850px;
+    padding: 40px 20px 0 20px;
+}
+
+/* =====================================================
+   ШАПКА
+   ===================================================== */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    border-color: #000000;
+    color: #e65c00;
+}
+
+/* =====================================================
+   ОСНОВНОЙ КОНТЕНТ
+   ===================================================== */
+
+main {
+    margin-bottom: 50px;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* About */
+.about p {
+    font-size: 19px;
+}
+
+.about img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+/* Advantages */
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+/* Table (топ-5 блюд) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px 12px;
+    border: 2px solid #888888;
+    text-align: center;
+    font-size: 17px;
+}
+
+table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
+
+th {
+    font-weight: 700;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* =====================================================
+   ФУТЕР
+   ===================================================== */
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 35px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 850px;
+    padding: 0 20px;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+footer a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #ff9933;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* =====================================================
+   ФОРМЫ (общие стили)
+   ===================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.group-label {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* Стили для текстовых полей, email, tel, пароля, select и textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 12px 14px;
+    border: 2px solid #888888;
+    border-radius: 0;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+/* Подсветка поля при фокусе */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #000000;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Подсказка под полем (например, про доставку по Москве) */
+.hint {
+    font-size: 14px;
+    color: #555555;
+    font-style: italic;
+}
+
+/* Радио-кнопки */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-group.radio-vertical {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: #000000;
+    cursor: pointer;
+}
+
+/* Чекбоксы */
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    accent-color: #000000;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+/* Кнопка отправки формы */
+.btn-submit {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+/* Вопрос: Почему кнопка серая?
+   Ответ: Она disabled, пока не выбрано ни одно блюдо.
+   JS снимает этот атрибут, когда заказ становится непустым. */
+.btn-submit:disabled {
+    background-color: #888888;
+    border-color: #888888;
+    cursor: not-allowed;
+}
+
+.btn-submit:disabled:hover {
+    background-color: #888888;
+    border-color: #888888;
+}
+
+/* =====================================================
+   СЕКЦИЯ "СОБРАТЬ ЛАНЧ" (карточки блюд)
+   ===================================================== */
+
+/* Вопрос: Почему grid, а не flex?
+   Ответ: Grid удобнее для сетки карточек — auto-fill сам 
+   подстраивает количество колонок под ширину экрана. */
+
+.menu-category {
+    margin-bottom: 35px;
+}
+
+.menu-category h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка блюда */
+.dish-card {
+    border: 2px solid #888888;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    background-color: #ffffff;
+    /* Плавный переход для рамки и тени */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Вопрос: Как выделяется выбранная карточка?
+   Ответ: По заданию она должна быть выделена рамкой, 
+   как при наведении. Поэтому я объединил :hover и .selected. 
+   JS добавляет класс .selected выбранной карточке. */
+.dish-card:hover,
+.dish-card.selected {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px #000000;
+}
+
+.dish-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.dish-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.dish-count {
+    font-size: 14px;
+    color: #555555;
+    margin: 0;
+}
+
+.dish-price {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.dish-add {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 8px 18px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dish-add:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+/* =====================================================
+   СЕКЦИЯ "СДЕЛАТЬ ЗАКАЗ"
+   ===================================================== */
+
+.order-section {
+    margin-bottom: 45px;
+}
+
+.order-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+/* Вопрос: Как сделать две колонки?
+   Ответ: Использую grid с двумя равными колонками 1fr 1fr. 
+   На мобильных (медиа-запрос ниже) они схлопываются в одну. */
+
+.order-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.order-left h3,
+.order-right h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Левая колонка — "Ваш заказ" */
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.order-item h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.order-item p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Стиль для "Блюдо не выбрано" — серый курсив */
+.order-item-empty p {
+    color: #888888;
+    font-style: italic;
+}
+
+/* Сообщение "Ничего не выбрано" */
+.order-empty-all {
+    font-size: 17px;
+    color: #555555;
+    font-style: italic;
+}
+
+/* Блок стоимости заказа */
+.order-total {
+    margin-bottom: 25px;
+}
+
+.order-total h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.order-total-value {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+/* Вопрос: Что делает hidden?
+   Ответ: Атрибут hidden в HTML скрывает элемент. 
+   JS управляет им: если есть выбранные блюда — убирает hidden, 
+   если нет — ставит обратно. */
+
+.order-total[hidden] {
+    display: none;
+}
+
+/* Комментарий к заказу */
+.comment-group textarea {
+    min-height: 130px;
+}
+
+/* Правая колонка — "Ваши данные" */
+.order-right .form-group {
+    margin-bottom: 18px;
+}
+
+.promo-checkbox {
+    margin-bottom: 18px;
+}
+
+.order-right .btn-submit {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Мобильная адаптация: две колонки схлопываются в одну */
+@media (max-width: 700px) {
+    .order-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* =====================================================
+   СТРАНИЦА ЛОГИНА (login.html)
+   ===================================================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('promo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Затемняющий слой поверх фона, чтобы форма читалась */
+.login-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #000000;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-form .btn-submit {
+    align-self: stretch;
+    text-align: center;
+}
+
+.back-link {
+    text-align: center;
+    font-size: 14px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #e65c00;
+    font-weight: 600;
+}
+
+.back-link a:hover {
+    color: #000000;
+}
+
+/* =====================================================
+   ФОРМА ОБРАТНОЙ СВЯЗИ
+   ===================================================== */
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+}
