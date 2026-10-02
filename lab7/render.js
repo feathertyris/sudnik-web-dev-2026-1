@@ -8,7 +8,58 @@
 // ЛАБА № 6: рендер вариантов ланчей, рендер блока десертов,
 // валидация состава ланча при submit,
 // динамическое создание уведомлений.
-// ЛАБА № 7: загрузка блюд с API через loadDishes().
+// ЛАБА № 7: загрузка блюд с API через loadDishes(),
+// картинки берутся с GitHub Pages.
+// ============================================================
+
+// ============================================================
+// ЛАБА № 7: НАСТРОЙКИ КАРТИНОК
+// Картинки лежат в репозитории GitHub Pages:
+// https://feathertyris.github.io/sudnik-web-dev-2026-1/lab7/images/
+// ============================================================
+
+const IMAGE_BASE_URL =
+  "https://feathertyris.github.io/sudnik-web-dev-2026-1/lab7/images";
+
+// Соответствие: категория блюда → имя папки с картинками
+const IMAGE_FOLDER_BY_CATEGORY = {
+  soup: "soups",
+  main: "mains",
+  salad: "salads",
+  drink: "drinks",
+  dessert: "desserts"
+};
+
+/**
+ * Строит абсолютный URL картинки блюда на GitHub Pages.
+ * Если у блюда есть абсолютный URL в поле image — использует его.
+ * Иначе собирает путь: <base>/<folder>/<keyword>.jpg
+ */
+function buildImageUrl(dish) {
+  if (dish.image && /^https?:\/\//i.test(dish.image)) {
+    return dish.image;
+  }
+  const folder = IMAGE_FOLDER_BY_CATEGORY[dish.category];
+  if (!folder) {
+    return `${IMAGE_BASE_URL}/placeholder.jpg`;
+  }
+  return `${IMAGE_BASE_URL}/${folder}/${dish.keyword}.jpg`;
+}
+
+/**
+ * Возвращает строку для onerror — заглушку.
+ */
+const PLACEHOLDER_URL = `${IMAGE_BASE_URL}/placeholder.jpg`;
+
+// ============================================================
+// ЛАБА № 7: URL API
+// ============================================================
+
+const DISHES_API_URL =
+  "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
+
+// ============================================================
+// СЛОВАРИ И СОСТОЯНИЕ
 // ============================================================
 
 const categoryTitles = {
@@ -66,19 +117,6 @@ const activeFilters = {
 // ЛАБА № 7: ЗАГРУЗКА БЛЮД С API
 // ============================================================
 
-// URL API.
-// МосПолитех-хостинг: http://lab7-api.std-900.ist.mospolytech.ru/api/dishes
-// Netlify / GitHub Pages: https://edu.std-900.ist.mospolytech.ru/labs/api/dishes
-const DISHES_API_URL =
-  "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
-
-/**
- * Загружает список блюд с сервера и заполняет глобальный массив dishes.
- * После успешной загрузки:
- *   - пересчитывает dessertKeywords,
- *   - рендерит фильтры и карточки блюд,
- *   - рендерит варианты ланчей и блок десертов.
- */
 async function loadDishes() {
   try {
     const response = await fetch(DISHES_API_URL);
@@ -153,8 +191,11 @@ function renderDishes() {
     card.className = "dish-card";
     card.dataset.dish = dish.keyword;
 
+    const imageSrc = buildImageUrl(dish);
+
     card.innerHTML = `
-      <img src="${dish.image}.jpg" alt="${dish.name}" class="dish-image">
+      <img src="${imageSrc}" alt="${dish.name}" class="dish-image"
+           onerror="this.onerror=null; this.src='${PLACEHOLDER_URL}';">
       <h4 class="dish-name">${dish.name}</h4>
       <p class="dish-count">${dish.count}</p>
       <p class="dish-price">${dish.price} ₽</p>
@@ -341,9 +382,12 @@ function renderLunchVariants() {
       const dish = dishes.find(d => d.keyword === key);
       if (!dish) return;
 
+      const imageSrc = buildImageUrl(dish);
+
       dishesHtml += `
         <div class="variant-dish">
-          <img src="${dish.image}.jpg" alt="${dish.name}" class="variant-dish-image">
+          <img src="${imageSrc}" alt="${dish.name}" class="variant-dish-image"
+               onerror="this.onerror=null; this.src='${PLACEHOLDER_URL}';">
           <div class="variant-dish-info">
             <span class="variant-dish-name">${dish.name}</span>
             <span class="variant-dish-price">${dish.price} ₽</span>
@@ -380,8 +424,11 @@ function renderDesserts() {
     card.className = "dessert-card";
     card.dataset.dish = dish.keyword;
 
+    const imageSrc = buildImageUrl(dish);
+
     card.innerHTML = `
-      <img src="${dish.image}.jpg" alt="${dish.name}" class="dessert-image">
+      <img src="${imageSrc}" alt="${dish.name}" class="dessert-image"
+           onerror="this.onerror=null; this.src='${PLACEHOLDER_URL}';">
       <span class="dessert-name">${dish.name}</span>
       <span class="dessert-price">${dish.price} ₽</span>
       <button type="button" class="dessert-add">Добавить</button>
@@ -553,8 +600,6 @@ function handleOrderSubmit(event) {
 // ИНИЦИАЛИЗАЦИЯ
 // ============================================================
 
-// Форма заказа и её обработчики не зависят от блюд —
-// подключаем сразу, чтобы пользователь мог взаимодействовать.
 const orderFormEl = document.getElementById("order-form");
 if (orderFormEl) {
   orderFormEl.addEventListener("submit", handleOrderSubmit);
