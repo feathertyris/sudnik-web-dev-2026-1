@@ -1,0 +1,896 @@
+/* =====================================================
+   БАЗОВЫЕ СТИЛИ И СБРОС
+   ===================================================== */
+
+:root {
+    /* Базовый размер подписи, от которого считается шрифт десертов.
+       По ТЗ шрифт десерта должен быть меньше подписи ровно на 2 пункта. */
+    --label-font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #000000;
+    line-height: 1.6;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 850px;
+    padding: 40px 20px 0 20px;
+}
+
+/* =====================================================
+   ШАПКА
+   ===================================================== */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    border-color: #000000;
+    color: #e65c00;
+}
+
+/* =====================================================
+   ОСНОВНОЙ КОНТЕНТ
+   ===================================================== */
+
+main {
+    margin-bottom: 50px;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 19px;
+}
+
+.about img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 14px 12px;
+    border: 2px solid #888888;
+    text-align: center;
+    font-size: 17px;
+}
+
+table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
+
+th {
+    font-weight: 700;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* =====================================================
+   ФУТЕР
+   ===================================================== */
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 35px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 850px;
+    padding: 0 20px;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+footer a {
+    text-decoration: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    color: #ff9933;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* =====================================================
+   ФОРМЫ (общие стили)
+   ===================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.group-label {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    padding: 12px 14px;
+    border: 2px solid #888888;
+    border-radius: 0;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #000000;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.hint {
+    font-size: 14px;
+    color: #555555;
+    font-style: italic;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-group.radio-vertical {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: #000000;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    accent-color: #000000;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.btn-submit {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+.btn-submit:disabled {
+    background-color: #888888;
+    border-color: #888888;
+    cursor: not-allowed;
+}
+
+.btn-submit:disabled:hover {
+    background-color: #888888;
+    border-color: #888888;
+}
+
+/* =====================================================
+   СЕКЦИЯ "СОБРАТЬ ЛАНЧ" (карточки блюд)
+   ===================================================== */
+
+.menu-category {
+    margin-bottom: 35px;
+}
+
+.menu-category h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.dish-card {
+    border: 2px solid #888888;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dish-card:hover,
+.dish-card.selected {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px #000000;
+}
+
+.dish-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.dish-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.dish-count {
+    font-size: 14px;
+    color: #555555;
+    margin: 0;
+}
+
+.dish-price {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.dish-add {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 8px 18px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dish-add:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+/* =====================================================
+   ФИЛЬТРЫ
+   ===================================================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-btn {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.filter-btn.active {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+/* =====================================================
+   СЕКЦИЯ "СДЕЛАТЬ ЗАКАЗ"
+   ===================================================== */
+
+.order-section {
+    margin-bottom: 45px;
+}
+
+.order-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.order-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.order-left h3,
+.order-right h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.order-item h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.order-item p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.order-item-empty p {
+    color: #888888;
+    font-style: italic;
+}
+
+.order-empty-all {
+    font-size: 17px;
+    color: #555555;
+    font-style: italic;
+}
+
+.order-total {
+    margin-bottom: 25px;
+}
+
+.order-total h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.order-total-value {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.order-total[hidden] {
+    display: none;
+}
+
+.comment-group textarea {
+    min-height: 130px;
+}
+
+.order-right .form-group {
+    margin-bottom: 18px;
+}
+
+.promo-checkbox {
+    margin-bottom: 18px;
+}
+
+/* =====================================================
+   КНОПКИ «СБРОСИТЬ» И «ОТПРАВИТЬ»
+   ===================================================== */
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-reset {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    padding: 12px 24px;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.2s ease;
+}
+
+.btn-reset:hover {
+    background-color: #f0f0f0;
+}
+
+.form-actions .btn-submit {
+    flex: 1;
+    margin-top: 0;
+}
+
+@media (max-width: 700px) {
+    .order-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* =====================================================
+   СТРАНИЦА ЛОГИНА (login.html)
+   ===================================================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('promo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.login-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #000000;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-form .btn-submit {
+    align-self: stretch;
+    text-align: center;
+}
+
+.back-link {
+    text-align: center;
+    font-size: 14px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #e65c00;
+    font-weight: 600;
+}
+
+.back-link a:hover {
+    color: #000000;
+}
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* =====================================================
+   ЛАБА № 6: БЛОК ВАРИАНТОВ ЛАНЧЕЙ
+   ===================================================== */
+
+.lunch-variants {
+    margin-bottom: 50px;
+}
+
+/* Grid-контейнер: 3 колонки на каждой строке */
+.variants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Карточка варианта ланча — flex-контейнер */
+.variant-card {
+    border: 2px solid #888888;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.variant-card:hover {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px #000000;
+}
+
+.variant-title {
+    font-size: 19px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Список блюд в варианте — flex, направление главной оси сверху вниз */
+.variant-dishes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Блок каждого блюда внутри варианта */
+.variant-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.variant-dish-image {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Контейнер для подписи и цены (подпись + цена) */
+.variant-dish-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.variant-dish-name {
+    font-size: var(--label-font-size);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.variant-dish-price {
+    font-size: 13px;
+    color: #555555;
+}
+
+/* Адаптив: на узких экранах — 2 или 1 колонка */
+@media (max-width: 900px) {
+    .variants-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .variants-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+   ЛАБА № 6: БЛОК ДЕСЕРТОВ
+   ===================================================== */
+
+.desserts-info {
+    margin-top: 30px;
+    padding: 25px;
+    border: 2px dashed #cccccc;
+    background-color: #fafafa;
+}
+
+.desserts-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.desserts-hint {
+    font-size: 14px;
+    color: #555555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.desserts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.dessert-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dessert-card:hover {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px #000000;
+}
+
+/* ЛАБА № 6: transform при наведении на изображение десерта */
+.dessert-card .dessert-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.dessert-card:hover .dessert-image {
+    transform: translateY(-8px) scale(1.08);
+}
+
+/* Шрифт меньше подписи ровно на 2 пункта.
+   Размер подписи берётся из --label-font-size,
+   поэтому при изменении базового размера всё остаётся согласованным. */
+.dessert-card .dessert-name {
+    font-size: calc(var(--label-font-size) - 2px);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.dessert-card .dessert-price {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.dessert-add {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dessert-add:hover {
+    background-color: #e65c00;
+    border-color: #e65c00;
+}
+
+/* =====================================================
+   ЛАБА № 6: УВЕДОМЛЕНИЯ
+   ===================================================== */
+
+.notification-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.notification-box {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    padding: 30px 35px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    animation: notifAppear 0.25s ease;
+}
+
+@keyframes notifAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.notification-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.notification-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.notification-missing {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-align: left;
+}
+
+.notification-missing li {
+    font-size: 15px;
+    padding: 6px 0 6px 24px;
+    position: relative;
+    color: #b30000;
+}
+
+.notification-missing li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: #b30000;
+}
+
+.notification-ok {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.notification-ok:hover {
+    background-color: #e65c00;
+    color: #ffffff;
+    border-color: #e65c00;
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Construct — Доставка бизнес-ланчей</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <h1>Food Construct</h1>
+            <nav>
+                <a href="#">О нас</a>
+                <a href="#lunch">Собрать ланч</a>
+                <a href="#lunch-variants">Варианты ланчей</a>
+                <a href="#order">Сделать заказ</a>
+                <a href="#feedback">Обратная связь</a>
+                <a href="#contacts">Контакты</a>
+                <a href="login.html">Войти</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="about">
+                <h2>О нас</h2>
+                <img src="promo.jpg" alt="Разнообразные блюда Food Construct">
+                <p>Food Construct - доставка бизнес-ланчей в Москве. Мы привезем вам горячую вкусную еду в любую точку города к назначенному времени.</p>
+            </section>
+
+            <section class="advantages">
+                <h2>Преимущества Food Construct</h2>
+                <ul>
+                    <li>Привозим обед к назначенному времени без опозданий</li>
+                    <li>Надежно упаковываем блюда в удобные контейнеры бесплатно</li>
+                    <li>Доставляем ланчи весь день с 7:00 до 23:00</li>
+                </ul>
+            </section>
+
+            <section class="top-dishes">
+                <h2>Топ-5 популярных блюд</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Название</th>
+                            <th>Кол-во заказов в неделю</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Лазанья</td><td>185</td><td>385₽</td></tr>
+                        <tr><td>2</td><td>Том Ям с креветками</td><td>161</td><td>365₽</td></tr>
+                        <tr><td>3</td><td>Норвежский суп</td><td>144</td><td>270₽</td></tr>
+                        <tr><td>4</td><td>Жареная картошка с грибами</td><td>132</td><td>150₽</td></tr>
+                        <tr><td>5</td><td>Котлеты из курицы с картофельным пюре</td><td>128</td><td>225₽</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="lunch" id="lunch">
+                <h2>Собрать ланч</h2>
+
+                <div class="menu-category">
+                    <h3>Супы</h3>
+                    <div class="menu-grid" data-category="soup"></div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Основные блюда</h3>
+                    <div class="menu-grid" data-category="main"></div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Салаты и стартеры</h3>
+                    <div class="menu-grid" data-category="salad"></div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Напитки</h3>
+                    <div class="menu-grid" data-category="drink"></div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Десерты</h3>
+                    <div class="menu-grid" data-category="dessert"></div>
+                </div>
+            </section>
+
+            <!-- ============ ЛАБА № 6: Блок с вариантами ланчей ============ -->
+            <section class="lunch-variants" id="lunch-variants">
+                <h2>Доступные варианты ланчей</h2>
+
+                <div class="variants-grid" id="variants-grid">
+                    <!-- сюда render.js сгенерирует карточки вариантов -->
+                </div>
+
+                <!-- Блок с десертами -->
+                <div class="desserts-info">
+                    <h3>Десерты</h3>
+                    <p class="desserts-hint">
+                        Десерты можно добавить в любой вариант ланча.
+                    </p>
+                    <div class="desserts-grid" id="desserts-grid">
+                        <!-- сюда render.js сгенерирует карточки десертов -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="order-section" id="order">
+                <h2 class="order-title">Сделать заказ</h2>
+
+                <form action="https://httpbin.org/post" method="POST" id="order-form">
+                    <div class="order-columns">
+
+                        <div class="order-left">
+                            <h3>Ваш заказ</h3>
+
+                            <div class="order" id="order-items"></div>
+
+                            <div class="order-total" id="order-total" hidden>
+                                <h4>Стоимость заказа</h4>
+                                <p class="order-total-value">0₽</p>
+                            </div>
+
+                            <div class="form-group comment-group">
+                                <label for="comment">Комментарии к заказу</label>
+                                <textarea id="comment" name="comment" rows="6"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="order-right">
+                            <h3>Ваши данные</h3>
+
+                            <div class="form-group">
+                                <label for="name">Имя</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="checkbox-group promo-checkbox">
+                                <label>
+                                    <input type="checkbox" name="subscribe" checked>
+                                    Получать информацию о скидках и акциях
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Номер телефона</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Адрес доставки</label>
+                                <input type="text" id="address" name="address" required>
+                                <p class="hint">Доставка осуществляется только по Москве</p>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="group-label">Время доставки:</span>
+                                <div class="radio-group radio-vertical">
+                                    <label><input type="radio" name="delivery_time" value="asap" checked> Как можно скорее</label>
+                                    <label><input type="radio" name="delivery_time" value="scheduled"> К указанному времени</label>
+                                </div>
+                            </div>
+
+                            <!-- ЛАБА № 5: поле точного времени доставки -->
+                            <div class="form-group">
+                                <label for="delivery-time">Укажите время доставки</label>
+                                <input type="time" id="delivery-time" name="delivery_time_exact" min="07:00" max="23:00">
+                                <p class="hint">Доступное время доставки с 7:00 до 23:00</p>
+                            </div>
+
+                            <!-- ЛАБА № 5: кнопки «Сбросить» и «Отправить» -->
+                            <div class="form-actions">
+                                <button type="reset" class="btn-reset">Сбросить</button>
+                                <button type="submit" class="btn-submit" id="order-submit" disabled>Отправить</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </section>
+
+            <section class="feedback" id="feedback">
+                <h2>Обратная связь</h2>
+                <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="fio">ФИО:</label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-feedback">Email:</label>
+                        <input type="email" id="email-feedback" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="group-label">Откуда узнали о нас?</span>
+                        <div class="radio-group">
+                            <label><input type="radio" name="source" value="ads" required> Реклама</label>
+                            <label><input type="radio" name="source" value="friends"> Друзья</label>
+                            <label><input type="radio" name="source" value="search"> Поисковик</label>
+                            <label><input type="radio" name="source" value="other"> Другое</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Тип обращения:</label>
+                        <select id="type" name="type" required>
+                            <option value="" disabled selected>— Выберите —</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Текст сообщения:</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Напишите ваш отзыв..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachment">Вложение (файл):</label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="consent" required>
+                            Даю согласие на обработку персональных данных
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer id="contacts">
+        <div class="footer-content">
+            <p>Свяжитесь с нами для заказа вкусных обедов:</p>
+            <a href="tel:+78005553535">Позвонить нам +7-800-555-35-35</a>
+        </div>
+    </footer>
+
+    <script src="dishes.js"></script>
+    <script src="render.js"></script>
+
+</body>
+</html>
