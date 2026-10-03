@@ -17,12 +17,6 @@ body {
     align-items: center;
 }
 
-/* Чтобы якорные ссылки скроллили плавно */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Обёртка для контента, чтобы он не растягивался на весь экран */
 .wrapper {
     width: 100%;
     max-width: 850px;
@@ -62,7 +56,6 @@ nav a {
     color: #000000;
     font-weight: 600;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 /* При наведении ссылка подчёркивается и меняет цвет */
@@ -130,7 +123,6 @@ th, td {
     font-size: 17px;
 }
 
-/* Названия блюд выравниваю влево, так читабельнее */
 table tbody td:nth-child(2) {
     text-align: left;
     padding-left: 15px;
@@ -177,7 +169,6 @@ footer a {
     font-size: 19px;
     color: #ff9933;
     font-weight: 700;
-    transition: color 0.2s ease;
 }
 
 /* При наведении становится белой */
@@ -185,13 +176,6 @@ footer a:hover {
     color: white;
 }
 
-/* =====================================================
-   ФОРМА ОБРАТНОЙ СВЯЗИ
-   Оформляю в том же стиле, что и вся страница —
-   без лишних фонов и закруглений, чтобы не выбивалась
-   ===================================================== */
-
-/* Форма — флекс-колонка с отступами между полями */
 .feedback form {
     display: flex;
     flex-direction: column;
@@ -216,7 +200,6 @@ footer a:hover {
 }
 
 /* Все текстовые поля, email, пароль, селект, textarea */
-/* Одинаковые рамки, чтобы форма смотрелась единообразно */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
@@ -230,10 +213,9 @@ footer a:hover {
     border-radius: 0;
     background-color: #ffffff;
     outline: none;
-    transition: border-color 0.2s ease;
 }
 
-/* При фокусе рамка становится чёрной — как у ссылок при наведении */
+/* При фокусе рамка становится чёрной */
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group input[type="password"]:focus,
@@ -265,7 +247,6 @@ footer a:hover {
     cursor: pointer;
 }
 
-/* Крашу радио в чёрный, чтобы сочеталось с текстом */
 .radio-group input[type="radio"] {
     accent-color: #000000;
     cursor: pointer;
@@ -288,7 +269,7 @@ footer a:hover {
     height: 18px;
 }
 
-/* Поле для файла — рамка пунктиром, чтобы отличалось от текстовых */
+/* Поле для файла — рамка пунктиром */
 .form-group input[type="file"] {
     font-family: 'Comfortaa', sans-serif;
     font-size: 15px;
@@ -297,14 +278,13 @@ footer a:hover {
     border: 2px solid #888888;
     border-radius: 0;
     cursor: pointer;
-    transition: border-color 0.2s ease;
 }
 
 .form-group input[type="file"]:hover {
     border-color: #000000;
 }
 
-/* Кнопка отправки — чёрная, при наведении оранжевая, как ссылки */
+/* Кнопка отправки — чёрная, при наведении оранжевая */
 .btn-submit {
     font-family: 'Comfortaa', sans-serif;
     font-size: 17px;
@@ -315,7 +295,6 @@ footer a:hover {
     padding: 12px 24px;
     cursor: pointer;
     align-self: flex-start;
-    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-submit:hover {
@@ -324,44 +303,23 @@ footer a:hover {
     color: #ffffff;
 }
 
-/* =====================================================
-   СТРАНИЦА ЛОГИНА
-   Здесь форма по центру + фон на весь экран (требование лабы)
-   ===================================================== */
-
-/* Фон на весь экран + центрирование формы через flex */
+/* Страница авторизации: центрирует форму на чистом светлом фоне */
 .login-page {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('promo.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    position: relative;
+    background-color: #f7f7f7;
 }
 
-/* Затемняющий слой поверх картинки, иначе белая форма сливается */
-.login-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.55);
-    z-index: 0;
-}
-
-/* Контейнер с формой — поверх затемнения */
+/* Адаптивный контейнер формы */
 .login-container {
-    position: relative;
-    z-index: 1;
     width: 100%;
     max-width: 420px;
     padding: 20px;
 }
 
-/* Сама форма — белая, с чёрной рамкой в стиле сайта */
+/* Белая форма с чёрной рамкой */
 .login-form {
     background-color: #ffffff;
     padding: 35px 30px;
@@ -398,7 +356,6 @@ footer a:hover {
     font-size: 14px;
     color: #e65c00;
     font-weight: 600;
-    transition: color 0.2s ease;
 }
 
 .back-link a:hover {

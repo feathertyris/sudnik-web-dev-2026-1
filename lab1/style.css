@@ -17,7 +17,7 @@ body {
     align-items: center;    
 }
 
-/* Чтобы якорная ссылка плавно скроллила вниз */
+
 html {
     scroll-behavior: smooth;
 }
@@ -90,6 +90,7 @@ section h2 {
 }
 
 /* Текст в секции "О нас" */
+/*все абзацы внутри блока с классом about*/
 .about p {
     font-size: 19px;
     color: #000000;
