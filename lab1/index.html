@@ -4,46 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Construct — Доставка бизнес-ланчей</title>
-    <!-- Подключаю шрифт Comfortaa с Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Comfortaa:wght=400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Обёртка, чтобы контент не растягивался на весь экран -->
     <div class="wrapper">
-        <!-- Шапка сайта: тут заголовок и меню -->
         <header>
-            <!-- Главный заголовок -->
             <h1>Food Construct</h1>
-            <!-- Навигация по сайту -->
             <nav>
-                <a href="#">О нас</a>
-                <a href="#">Собрать ланч</a>
-                <a href="#">Заказы</a>
-                <!-- Ссылка "Контакты" ведёт вниз к футеру -->
+                <a href="#about">О нас</a>
+                <a href="#build-lunch">Собрать ланч</a>
+                <a href="#orders">Заказы</a>
                 <a href="#contacts">Контакты</a>
             </nav>
         </header>
 
-        <!-- Основная часть страницы -->
         <main>
-            
-            <!-- Секция "О нас" -->
-            <section class="about">
+            <section id="about" class="about">
                 <h2>О нас</h2>
-                
                 <img src="promo.jpg" alt="Разнообразные блюда Food Construct">
-                <!-- Пара слов о компании -->
                 <p>Food Construct - доставка бизнес-ланчей в Москве. Мы привезем вам горячую вкусную еду в любую точку города к назначенному времени.</p>
             </section>
 
-            <!-- Секция с преимуществами -->
-            <section class="advantages">
+            <section id="build-lunch" class="advantages">
                 <h2>Преимущества Food Construct</h2>
-                <!-- Список из трёх пунктов -->
                 <ul>
                     <li>Привозим обед к назначенному времени без опозданий</li>
                     <li>Надежно упаковываем блюда в удобные контейнеры бесплатно</li>
@@ -51,10 +38,8 @@
                 </ul>
             </section>
 
-            <!-- Секция с топ-5 блюдами -->
-            <section class="top-dishes">
+            <section id="orders" class="top-dishes">
                 <h2>Топ-5 популярных блюд</h2>
-                <!-- Таблица с блюдами -->
                 <table>
                     <thead>
                         <tr>
@@ -91,7 +76,7 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Котлеты из курицы с картофельным пюре</td>
+                            <td>Kотлеты из курицы с картофельным пюре</td>
                             <td>128</td>
                             <td>225₽</td>
                         </tr>
@@ -101,11 +86,9 @@
         </main>
     </div> 
 
-    <!-- Футер с контактами, сюда ведёт якорная ссылка -->
     <footer id="contacts">
         <div class="footer-content">
             <p>Свяжитесь с нами для заказа вкусных обедов:</p>
-            <!-- Ссылка на телефон -->
             <a href="tel:+78005553535" rel="noopener">Позвонить нам +7-800-555-35-35</a>
         </div>
     </footer>

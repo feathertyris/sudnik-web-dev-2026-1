@@ -1,7 +1,7 @@
 @media print {
     body {
         font-family: 'Comfortaa', sans-serif;
-        font-size: 12pt;
+        font-size: 10pt;
         color: #000000;
         background-color: #ffffff;
     }
@@ -12,13 +12,14 @@
     }
 
     header { margin-bottom: 20px; }
-    header h1 { font-size: 24pt; }
+    header h1 { font-size: 30pt; }
 
     .dish {
         filter: none;
         border: 1px solid #000000;
         border-radius: 0;
         padding: 10px;
+	page-break-inside: avoid; 
     }
 
     .dish img { border-radius: 0; }

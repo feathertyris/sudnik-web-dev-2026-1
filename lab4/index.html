@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Construct — Доставка бизнес-ланчей</title>
-    <!-- Подключаю шрифт Comfortaa, как в макете -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
@@ -66,17 +65,10 @@
                 </table>
             </section>
 
-            <!-- ============================================
-                 Секция "Собрать ланч" — выбор блюд.
-                 Контейнеры пустые, карточки создаст render.js
-                 ============================================ -->
             <section class="lunch" id="lunch">
                 <h2>Собрать ланч</h2>
 
-                <!-- Вопрос: Почему внутри пусто?
-                     Ответ: По заданию карточки должны создаваться скриптом.
-                     Здесь только контейнеры с data-category, 
-                     в которые JS будет добавлять блюда. -->
+              
                 <div class="menu-category">
                     <h3>Супы</h3>
                     <div class="menu-grid" data-category="soup"></div>
@@ -93,18 +85,11 @@
                 </div>
             </section>
 
-            <!-- ============================================
-                 Секция "Сделать заказ".
-                 Левая колонка — заказ (обновляется из JS).
-                 Правая колонка — данные пользователя (статика).
-                 ============================================ -->
+            
             <section class="order-section" id="order">
                 <h2 class="order-title">Сделать заказ</h2>
 
-                <!-- Вопрос: Куда уходят данные формы?
-                     Ответ: На httpbin.org/post — это тестовый сервер, 
-                     который возвращает то, что мы отправили. 
-                     Так можно проверить, что уходят keyword. -->
+                
                 <form action="https://httpbin.org/post" method="POST" id="order-form">
                     <div class="order-columns">
 
@@ -115,8 +100,7 @@
                             <!-- Сюда JS выводит выбранные блюда -->
                             <div class="order" id="order-items"></div>
 
-                            <!-- Блок стоимости. Изначально скрыт, 
-                                 показывается только если есть выбранные блюда -->
+                           
                             <div class="order-total" id="order-total" hidden>
                                 <h4>Стоимость заказа</h4>
                                 <p class="order-total-value">0₽</p>
@@ -242,7 +226,6 @@
         </div>
     </footer>
 
-    <!-- Подключаю скрипты в конце body, чтобы DOM был готов к моменту выполнения -->
     <script src="dishes.js"></script>
     <script src="render.js"></script>
 

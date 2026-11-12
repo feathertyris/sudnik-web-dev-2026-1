@@ -1,11 +1,5 @@
-// ============================================================
-// render.js
-// ЛАБА № 4: сортировка, рендер карточек, выбор блюда,
-// обновление формы заказа, скрытые поля, подсветка.
-// ЛАБА № 5: добавлены фильтры, новые категории,
-// свойство kind, класс active, сохранение заказа,
-// обработчик кнопки «Сбросить».
-// ============================================================
+const order = { soup: null, main: null, salad: null, drink: null, dessert: null };
+const activeFilters = { soup: null, main: null, salad: null, drink: null, dessert: null };
 
 const categoryTitles = {
   soup: "Суп",
@@ -16,252 +10,212 @@ const categoryTitles = {
 };
 
 const categoryFilters = {
-  soup: [
-    { kind: "fish", label: "рыбный" },
-    { kind: "meat", label: "мясной" },
-    { kind: "veg", label: "вегетарианский" }
-  ],
-  main: [
-    { kind: "fish", label: "рыбное" },
-    { kind: "meat", label: "мясное" },
-    { kind: "veg", label: "вегетарианское" }
-  ],
-  salad: [
-    { kind: "fish", label: "рыбный" },
-    { kind: "meat", label: "мясной" },
-    { kind: "veg", label: "вегетарианский" }
-  ],
-  drink: [
-    { kind: "cold", label: "холодный" },
-    { kind: "hot", label: "горячий" }
-  ],
-  dessert: [
-    { kind: "small", label: "маленькая порция" },
-    { kind: "medium", label: "средняя порция" },
-    { kind: "big", label: "большая порция" }
-  ]
+  soup: [{ kind: "fish", label: "рыбный" }, { kind: "meat", label: "мясной" }, { kind: "veg", label: "вегетарианский" }],
+  main: [{ kind: "fish", label: "рыбное" }, { kind: "meat", label: "мясное" }, { kind: "veg", label: "вегетарианское" }],
+  salad: [{ kind: "fish", label: "рыбный" }, { kind: "meat", label: "мясной" }, { kind: "veg", label: "вегетарианский" }],
+  drink: [{ kind: "cold", label: "холодный" }, { kind: "hot", label: "горячий" }],
+  dessert: [{ kind: "small", label: "маленькая" }, { kind: "medium", label: "средняя" }, { kind: "big", label: "большая" }]
 };
 
-const order = {
-  soup: null,
-  main: null,
-  salad: null,
-  drink: null,
-  dessert: null
-};
+function renderDishesAndFilters() {
+  const sorted = [...dishes].sort((a, b) => a.name.localeCompare(b.name, "ru"));
 
-const activeFilters = {
-  soup: null,
-  main: null,
-  salad: null,
-  drink: null,
-  dessert: null
-};
+  let categories = ["soup", "main", "salad", "drink", "dessert"];
 
-function getSortedDishes() {
-  return [...dishes].sort((a, b) =>
-    a.name.localeCompare(b.name, "ru")
-  );
-}
+  for (let i = 0; i < categories.length; i = i + 1) {
+    let cat = categories[i];
 
-function renderDishes() {
-  const sorted = getSortedDishes();
-
-  const containers = {
-    soup: document.querySelector('[data-category="soup"]'),
-    main: document.querySelector('[data-category="main"]'),
-    salad: document.querySelector('[data-category="salad"]'),
-    drink: document.querySelector('[data-category="drink"]'),
-    dessert: document.querySelector('[data-category="dessert"]')
-  };
-
-  Object.values(containers).forEach(c => {
-    if (c) c.innerHTML = "";
-  });
-
-  sorted.forEach(dish => {
-    const container = containers[dish.category];
-    if (!container) return;
-
-    const currentFilter = activeFilters[dish.category];
-    if (currentFilter && dish.kind !== currentFilter) {
-      return;
+    let container = document.querySelector('[data-category="' + cat + '"]');
+    if (container === null) {
+      continue;
     }
 
-    const card = document.createElement("article");
-    card.className = "dish-card";
-    card.dataset.dish = dish.keyword;
-
-    card.innerHTML = `
-      <img src="${dish.image}.jpg" alt="${dish.name}" class="dish-image">
-      <h4 class="dish-name">${dish.name}</h4>
-      <p class="dish-count">${dish.count}</p>
-      <p class="dish-price">${dish.price} ₽</p>
-      <button type="button" class="dish-add">Добавить</button>
-    `;
-
-    card.querySelector(".dish-add").addEventListener("click", () => {
-      selectDishByKeyword(card.dataset.dish);
-    });
-
-    container.appendChild(card);
-  });
-
-  updateHighlight();
-}
-
-function renderFilters() {
-  const categories = ['soup', 'main', 'salad', 'drink', 'dessert'];
-
-  categories.forEach(cat => {
-    const container = document.querySelector(`[data-category="${cat}"]`);
-    if (!container) return;
-
-    const menuCategory = container.closest('.menu-category');
-    if (!menuCategory) return;
+    let menuCategory = container.closest('.menu-category');
+    if (menuCategory === null) {
+      continue;
+    }
 
     let filterBlock = menuCategory.querySelector('.filters');
-    if (!filterBlock) {
+    if (filterBlock === null) {
       filterBlock = document.createElement('div');
       filterBlock.className = 'filters';
       menuCategory.insertBefore(filterBlock, container);
     }
 
     filterBlock.innerHTML = '';
-    const filters = categoryFilters[cat] || [];
 
-    filters.forEach(filter => {
-      const btn = document.createElement('button');
+    let filtersArray = categoryFilters[cat];
+    for (let f = 0; f < filtersArray.length; f = f + 1) {
+      let filter = filtersArray[f];
+
+      let btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'filter-btn';
       btn.textContent = filter.label;
-      btn.dataset.kind = filter.kind;
 
       if (activeFilters[cat] === filter.kind) {
-        btn.classList.add('active');
+        btn.className = 'filter-btn active';
+      } else {
+        btn.className = 'filter-btn';
       }
 
-      btn.addEventListener('click', () => toggleFilter(cat, filter.kind));
+      btn.addEventListener('click', function () {
+        if (activeFilters[cat] === filter.kind) {
+          activeFilters[cat] = null;
+        } else {
+          activeFilters[cat] = filter.kind;
+        }
+        renderDishesAndFilters();
+      });
+
       filterBlock.appendChild(btn);
-    });
-  });
-}
+    }
 
-function toggleFilter(category, kind) {
-  if (activeFilters[category] === kind) {
-    activeFilters[category] = null;
-  } else {
-    activeFilters[category] = kind;
+    container.innerHTML = '';
+
+    for (let d = 0; d < sorted.length; d = d + 1) {
+      let dish = sorted[d];
+
+      if (dish.category !== cat) {
+        continue;
+      }
+
+      if (activeFilters[cat] !== null) {
+        if (dish.kind !== activeFilters[cat]) {
+          continue;
+        }
+      }
+
+      let isSelected = false;
+      if (order.soup !== null && order.soup.keyword === dish.keyword) { isSelected = true; }
+      if (order.main !== null && order.main.keyword === dish.keyword) { isSelected = true; }
+      if (order.salad !== null && order.salad.keyword === dish.keyword) { isSelected = true; }
+      if (order.drink !== null && order.drink.keyword === dish.keyword) { isSelected = true; }
+      if (order.dessert !== null && order.dessert.keyword === dish.keyword) { isSelected = true; }
+
+      let card = document.createElement("article");
+      if (isSelected === true) {
+        card.className = "dish-card selected";
+      } else {
+        card.className = "dish-card";
+      }
+
+      card.innerHTML = 
+        '<img src="' + dish.image + '.jpg" alt="' + dish.name + '" class="dish-image">' +
+        '<h4 class="dish-name">' + dish.name + '</h4>' +
+        '<p class="dish-count">' + dish.count + '</p>' +
+        '<p class="dish-price">' + dish.price + ' ₽</p>' +
+        '<button type="button" class="dish-add">Добавить</button>';
+
+      let addButton = card.querySelector(".dish-add");
+      addButton.addEventListener("click", function () {
+        order[cat] = dish;
+        updateInterface();
+        renderDishesAndFilters();
+      });
+
+      container.appendChild(card);
+    }
   }
-
-  renderFilters();
-  renderDishes();
 }
 
-function selectDishByKeyword(keyword) {
-  const dish = dishes.find(d => d.keyword === keyword);
-  if (!dish) return;
+function updateInterface() {
+  let itemsBlock = document.getElementById("order-items");
+  let totalBlock = document.getElementById("order-total");
+  let submitBtn = document.getElementById("order-submit");
+  let form = document.getElementById("order-form");
 
-  order[dish.category] = dish;
-
-  updateOrderForm();
-  updateHighlight();
-}
-
-function updateOrderForm() {
-  const itemsBlock = document.getElementById("order-items");
-  const totalBlock = document.getElementById("order-total");
-  const totalValue = document.querySelector(".order-total-value");
-  const submitBtn = document.getElementById("order-submit");
-
-  if (!itemsBlock) return;
-
-  const hasAny = Object.values(order).some(Boolean);
-
-  if (!hasAny) {
-    itemsBlock.innerHTML = '<p class="order-empty-all">Ничего не выбрано</p>';
-    if (totalBlock) totalBlock.hidden = true;
-    if (submitBtn) submitBtn.disabled = true;
-    updateHiddenFields();
+  if (itemsBlock === null) {
     return;
   }
 
-  if (totalBlock) totalBlock.hidden = false;
-  if (submitBtn) submitBtn.disabled = false;
+  let hasAny = false;
+  if (order.soup !== null || order.main !== null || order.salad !== null || order.drink !== null || order.dessert !== null) {
+    hasAny = true;
+  }
+
+  if (hasAny === false) {
+    itemsBlock.innerHTML = '<p class="order-empty-all">Ничего не выбрано</p>';
+    if (totalBlock !== null) { totalBlock.hidden = true; }
+    if (submitBtn !== null) { submitBtn.disabled = true; }
+    
+    if (form !== null) {
+      let hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+      for (let i = 0; i < hiddenInputs.length; i = i + 1) {
+        hiddenInputs[i].remove();
+      }
+    }
+    return;
+  }
+
+  if (totalBlock !== null) { totalBlock.hidden = false; }
+  if (submitBtn !== null) { submitBtn.disabled = false; }
 
   let total = 0;
   let html = "";
 
-  for (const key of ["soup", "main", "salad", "drink", "dessert"]) {
-    const dish = order[key];
+  if (form !== null) {
+    let hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+    for (let i = 0; i < hiddenInputs.length; i = i + 1) {
+      hiddenInputs[i].remove();
+    }
+  }
 
-    if (dish) {
-      total += dish.price;
-      html += `
-        <div class="order-item">
-          <h4>${categoryTitles[key]}</h4>
-          <p>${dish.name} ${dish.price}₽</p>
-        </div>
-      `;
+  let categories = ["soup", "main", "salad", "drink", "dessert"];
+  for (let i = 0; i < categories.length; i = i + 1) {
+    let key = categories[i];
+    let dish = order[key];
+
+    if (dish !== null) {
+      total = total + dish.price;
+      
+      html = html + 
+        '<div class="order-item">' +
+          '<h4>' + categoryTitles[key] + '</h4>' +
+          '<p>' + dish.name + ' ' + dish.price + '₽</p>' +
+        '</div>';
+
+      if (form !== null) {
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = dish.keyword;
+        form.appendChild(input);
+      }
     } else {
-      const emptyText = key === "drink"
-        ? "Напиток не выбран"
-        : "Блюдо не выбрано";
-      html += `
-        <div class="order-item order-item-empty">
-          <h4>${categoryTitles[key]}</h4>
-          <p>${emptyText}</p>
-        </div>
-      `;
+      let emptyText = "Блюдо не выбрано";
+      if (key === "drink") {
+        emptyText = "Напиток не выбран";
+      }
+
+      html = html + 
+        '<div class="order-item order-item-empty">' +
+          '<h4>' + categoryTitles[key] + '</h4>' +
+          '<p>' + emptyText + '</p>' +
+        '</div>';
     }
   }
 
   itemsBlock.innerHTML = html;
-  if (totalValue) totalValue.textContent = `${total}₽`;
 
-  updateHiddenFields();
-}
-
-function updateHiddenFields() {
-  const form = document.getElementById("order-form");
-  if (!form) return;
-
-  form.querySelectorAll('input[type="hidden"][data-generated]').forEach(el => el.remove());
-
-  for (const key of ["soup", "main", "salad", "drink", "dessert"]) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = key;
-    input.value = order[key] ? order[key].keyword : "";
-    input.dataset.generated = "true";
-    form.appendChild(input);
+  let totalValue = document.querySelector(".order-total-value");
+  if (totalValue !== null) {
+    totalValue.textContent = total + "₽";
   }
 }
 
-function updateHighlight() {
-  document.querySelectorAll(".dish-card").forEach(card => {
-    const keyword = card.dataset.dish;
-    const isSelected = Object.values(order).some(
-      d => d && d.keyword === keyword
-    );
-    card.classList.toggle("selected", isSelected);
-  });
-}
-
-renderFilters();
-renderDishes();
-updateOrderForm();
-
-// ЛАБА № 5: обработчик кнопки «Сбросить».
-// Стандартный reset очистит поля формы, но не тронет
-// объект order и блок «Ваш заказ». Поэтому чистим вручную.
 const orderForm = document.getElementById("order-form");
-if (orderForm) {
-  orderForm.addEventListener("reset", () => {
-    Object.keys(order).forEach(key => {
-      order[key] = null;
-    });
-    updateOrderForm();
-    updateHighlight();
+if (orderForm !== null) {
+  orderForm.addEventListener("reset", function () {
+    order.soup = null;
+    order.main = null;
+    order.salad = null;
+    order.drink = null;
+    order.dessert = null;
+
+    updateInterface();
+    renderDishesAndFilters();
   });
 }
+
+renderDishesAndFilters();
+updateInterface();

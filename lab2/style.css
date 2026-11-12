@@ -1,4 +1,4 @@
-/* Сбрасываю отступы и ставлю border-box для всех элементов */
+
 * {
     box-sizing: border-box;
     margin: 0;

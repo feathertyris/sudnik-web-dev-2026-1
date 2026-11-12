@@ -8,42 +8,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Мой CSS-файл -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Обёртка, чтобы контент был по центру и не растягивался -->
     <div class="wrapper">
-        <!-- Шапка: тут заголовок сайта и меню -->
         <header>
             <h1>Food Construct</h1>
-            <!-- Навигация по страницам -->
+            <!-- Навигация по страницам (внутренние якоря) -->
             <nav>
-                <a href="#">О нас</a>
-                <a href="#">Собрать ланч</a>
-                <a href="#">Заказы</a>
-                <!-- Ссылка на форму обратной связи (якорь) -->
+                <a href="#about">О нас</a>
+                <a href="#build">Собрать ланч</a>
+                <a href="#orders">Заказы</a>
+                
                 <a href="#feedback">Обратная связь</a>
-                <!-- Ссылка на футер (якорь) -->
+                
                 <a href="#contacts">Контакты</a>
                 <!-- Ссылка на отдельную страницу логина -->
                 <a href="login.html">Войти</a>
             </nav>
         </header>
 
-        <!-- Основная часть страницы -->
+       
         <main>
-            <!-- Секция "О нас" -->
-            <section class="about">
+            
+            <section class="about" id="about">
                 <h2>О нас</h2>
-                <!-- Картинка с едой -->
+                
                 <img src="promo.jpg" alt="Разнообразные блюда Food Construct">
-                <!-- Немного текста о компании -->
+                
                 <p>Food Construct - доставка бизнес-ланчей в Москве. Мы привезем вам горячую вкусную еду в любую точку города к назначенному времени.</p>
             </section>
 
-            <!-- Секция преимуществ (по требованиям нужно минимум 3 пункта) -->
+            
             <section class="advantages">
                 <h2>Преимущества Food Construct</h2>
                 <ul>
@@ -53,7 +50,19 @@
                 </ul>
             </section>
 
-            <!-- Секция с топ-5 блюдами (по требованиям минимум 5 строк в таблице) -->
+           
+            <section class="build" id="build">
+                <h2>Собрать ланч</h2>
+                <p>Выберите блюда из нашего меню и соберите свой идеальный бизнес-ланч. Мы привезём его к назначенному времени.</p>
+            </section>
+
+            
+            <section class="orders" id="orders">
+                <h2>Заказы</h2>
+                <p>Здесь вы можете посмотреть историю своих заказов и повторить любой из них в один клик.</p>
+            </section>
+
+            
             <section class="top-dishes">
                 <h2>Топ-5 популярных блюд</h2>
                 <table>
@@ -78,8 +87,7 @@
             <!-- Форма обратной связи (новое задание) -->
             <section class="feedback" id="feedback">
                 <h2>Обратная связь</h2>
-                <!-- Отправляем POST на httpbin.org, чтобы посмотреть параметры -->
-                <!-- multipart/form-data нужен, чтобы файл нормально передался -->
+                
                 <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
 
                     <!-- ФИО -->
