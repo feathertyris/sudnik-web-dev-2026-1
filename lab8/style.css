@@ -1,0 +1,880 @@
+/* =====================================================
+   БАЗОВЫЕ СТИЛИ
+   Простой чёрно-белый вид Food Construct.
+   Сохранены сетки, формы и необходимые эффекты лабораторной.
+   ===================================================== */
+
+:root {
+    --label-font-size: 14px;
+    --main-width: 850px;
+    --border-color: #888888;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: 40px 20px 0;
+}
+
+/* =====================================================
+   ШАПКА И НАВИГАЦИЯ
+   ===================================================== */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding-bottom: 5px;
+}
+
+nav a {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   ОСНОВНОЙ КОНТЕНТ
+   ===================================================== */
+
+main {
+    margin-bottom: 50px;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+section h3 {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.about img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.about p {
+    font-size: 19px;
+}
+
+.advantages ul {
+    padding-left: 25px;
+}
+
+.advantages li {
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+/* =====================================================
+   ТАБЛИЦА ПОПУЛЯРНЫХ БЛЮД
+   ===================================================== */
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    font-size: 16px;
+    text-align: center;
+}
+
+table tbody td:nth-child(2) {
+    padding-left: 15px;
+    text-align: left;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 50px;
+}
+
+/* =====================================================
+   КАТЕГОРИИ БЛЮД И КАРТОЧКИ
+   ===================================================== */
+
+.menu-category {
+    margin-bottom: 35px;
+}
+
+.menu-category h3 {
+    margin-bottom: 15px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.dish-card:hover,
+.dish-card.selected {
+    border-color: #000000;
+}
+
+.dish-image {
+    display: block;
+    width: 100%;
+    height: 140px;
+    margin-bottom: 5px;
+    object-fit: cover;
+}
+
+.dish-name {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.dish-count {
+    color: #555555;
+    font-size: 14px;
+}
+
+.dish-price {
+    margin: 5px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.dish-add,
+.btn-submit,
+.notification-ok {
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dish-add:hover,
+.btn-submit:hover,
+.notification-ok:hover {
+    background-color: #444444;
+}
+
+.dish-add:disabled,
+.btn-submit:disabled {
+    border-color: #888888;
+    background-color: #888888;
+    cursor: not-allowed;
+}
+
+.no-dishes {
+    grid-column: 1 / -1;
+    color: #555555;
+    font-size: 16px;
+}
+
+/* =====================================================
+   ФИЛЬТРЫ
+   ===================================================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    border: 1px solid #888888;
+    border-radius: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* =====================================================
+   ВАРИАНТЫ ЛАНЧЕЙ
+   Grid для расположения вариантов и Flex внутри карточки.
+   ===================================================== */
+
+.lunch-variants {
+    margin-bottom: 50px;
+}
+
+.variants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.variant-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    border: 2px solid var(--border-color);
+    background-color: #ffffff;
+}
+
+.variant-card:hover {
+    border-color: #000000;
+}
+
+.variant-card h3,
+.variant-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.variant-card ul,
+.variant-dishes {
+    padding-left: 20px;
+}
+
+.variant-card li {
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+/* =====================================================
+   ДЕСЕРТЫ
+   ===================================================== */
+
+.desserts-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.desserts-info h3 {
+    margin-bottom: 8px;
+}
+
+.desserts-hint {
+    margin-bottom: 20px;
+    color: #555555;
+    font-size: 14px;
+}
+
+.desserts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.dessert-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #888888;
+    text-align: center;
+}
+
+.dessert-card:hover {
+    border-color: #000000;
+}
+
+.dessert-card .dessert-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+/* Небольшой transform оставлен как требуемый эффект лабораторной.
+   Селекторы .desserts-grid учитывают текущий render.js,
+   который использует общие классы dish-card и dish-image. */
+.dessert-card:hover .dessert-image,
+.desserts-grid .dish-card:hover .dish-image {
+    transform: translateY(-4px);
+}
+
+.dessert-card .dessert-name,
+.desserts-grid .dish-name {
+    font-size: calc(var(--label-font-size) - 2px);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.dessert-card .dessert-price,
+.desserts-grid .dish-price {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.desserts-grid .dish-image {
+    transition: transform 0.2s ease;
+}
+
+.dessert-add {
+    padding: 6px 12px;
+    border: 1px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dessert-add:hover {
+    background-color: #444444;
+}
+
+/* =====================================================
+   ПАНЕЛЬ ЗАКАЗА НА ГЛАВНОЙ СТРАНИЦЕ
+   ===================================================== */
+
+.order-panel {
+    margin: 35px 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-panel-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.order-panel-total {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.order-panel-total strong {
+    font-size: 21px;
+}
+
+.order-panel-link {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 2px solid #000000;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.order-panel-link:hover {
+    background-color: #444444;
+}
+
+.order-panel-link.disabled {
+    border-color: #888888;
+    background-color: #888888;
+    pointer-events: none;
+}
+
+/* =====================================================
+   СТРАНИЦА ОФОРМЛЕНИЯ ЗАКАЗА
+   ===================================================== */
+
+.order-section {
+    margin-bottom: 45px;
+}
+
+.order-title {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.order-composition,
+.order-form-section {
+    margin-bottom: 35px;
+}
+
+.order-composition h3,
+.order-form-section h3,
+.order-left h3,
+.order-right h3 {
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.order-composition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.order-dish-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.order-dish-card .dish-image {
+    height: 110px;
+}
+
+.order-remove,
+.btn-reset {
+    padding: 9px 16px;
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.order-remove:hover,
+.btn-reset:hover {
+    background-color: #eeeeee;
+}
+
+.order-summary {
+    max-width: 550px;
+    margin-bottom: 25px;
+}
+
+.order-category-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 7px 0;
+    border-bottom: 1px solid #dddddd;
+    font-size: 15px;
+}
+
+.order-total {
+    margin: 20px 0 25px;
+}
+
+.order-total h4 {
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.order-total-value {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.order-empty-message {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.order-empty-message a {
+    color: #000000;
+}
+
+.order-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.order-left,
+.order-right {
+    min-width: 0;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.order-item h4 {
+    margin-bottom: 4px;
+    font-size: 17px;
+}
+
+.order-item p {
+    font-size: 15px;
+}
+
+.order-item-empty p,
+.order-empty-all {
+    color: #666666;
+    font-style: italic;
+}
+
+.comment-group textarea {
+    min-height: 130px;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.form-actions .btn-submit,
+.form-actions .btn-reset {
+    min-width: 120px;
+}
+
+/* =====================================================
+   ФОРМЫ
+   ===================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.group-label {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group input[type="time"],
+.form-group input[type="file"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.hint {
+    color: #555555;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding: 5px 0;
+}
+
+.radio-group.radio-vertical {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    accent-color: #000000;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+}
+
+.promo-checkbox {
+    margin-bottom: 18px;
+}
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* =====================================================
+   СТРАНИЦА ВХОДА
+   Без фоновой картинки и затемняющего слоя.
+   ===================================================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+.login-title {
+    margin-bottom: 5px;
+    font-size: 26px;
+    text-align: center;
+}
+
+.login-form .btn-submit {
+    width: 100%;
+}
+
+.back-link {
+    font-size: 14px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #000000;
+}
+
+/* =====================================================
+   УВЕДОМЛЕНИЯ
+   Простой вариант без анимации и теней.
+   ===================================================== */
+
+.notification-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.notification-box {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.notification-title {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.notification-text {
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.notification-missing {
+    margin: 0 0 18px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.notification-missing li {
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+/* =====================================================
+   ПОДВАЛ
+   ===================================================== */
+
+footer {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+footer a {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   АДАПТИВНОСТЬ
+   ===================================================== */
+
+@media (max-width: 900px) {
+    .variants-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .order-columns {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .wrapper {
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    section h2 {
+        font-size: 23px;
+    }
+
+    .variants-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-composition-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    th,
+    td {
+        padding: 7px 5px;
+        font-size: 12px;
+    }
+}
